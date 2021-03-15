@@ -2,8 +2,6 @@ using System;
 using Xunit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using SeleniumExtras.PageObjects;
 using OpenQA.Selenium.Support.UI;
 
 namespace PullTest1_xUnit
@@ -24,18 +22,16 @@ namespace PullTest1_xUnit
 
             Assert.Equal(login, CheckLogin());
         }
+        [Fact]
         public void Test2()
         {
-            TransitionToSiteTest();
-            TransitionToMailTest();
-            EnterLogin_Password();
+            LogOut();
 
             Assert.True(CheckLogout());
         }
 
         public void TransitionToSiteTest()
         {
-            //driver = new ChromeDriver();
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "https://yandex.by/";
