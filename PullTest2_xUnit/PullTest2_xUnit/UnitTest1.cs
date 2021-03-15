@@ -56,6 +56,7 @@ namespace PullTest2_xUnit
             wait.Until(drv => drv.PageSource);
 
             driver.FindElement(By.Id("passp-field-passwd")).SendKeys(password);
+            driver.FindElement(By.XPath("//button[@class='Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit'"));
         }
 
         public bool IsInValidPass()
