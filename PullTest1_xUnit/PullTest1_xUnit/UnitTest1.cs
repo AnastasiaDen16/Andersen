@@ -52,6 +52,7 @@ namespace PullTest1_xUnit
             driver.FindElement(By.XPath("//input[@id='passp-field-login']")).SendKeys(login);
             driver.FindElement(By.XPath("//button/parent::div[@class='passp-button passp-sign-in-button']"));
             driver.FindElement(By.Id("passp-field-passwd")).SendKeys(password);
+            driver.FindElement(By.XPath("//button[@class='Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit'"));
         }
 
         public string CheckLogin()
