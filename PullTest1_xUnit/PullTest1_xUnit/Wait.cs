@@ -10,11 +10,13 @@ namespace PullTest1_xUnit
     {
         private static WebDriverWait wait = new WebDriverWait(BrowserManager.Driver, TimeSpan.FromSeconds(30));
 
-        [Obsolete]
-        static public void ForExists(By locator)
+        static public void ForVisible(By locator)
         {
-            wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
-            wait.Until(ExpectedConditions.ElementExists(locator));
+            wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        }
+        static public void LoadPage()
+        {
+            wait.Until(dvr=>dvr.PageSource);
         }
     }
 }

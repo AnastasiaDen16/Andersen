@@ -9,17 +9,20 @@ namespace PullTest1_xUnit
 {
     public class UnitTest1
     {
-        private IWebDriver driver;
+        private static IWebDriver driver = null;
         private string login = "AutotestLogin";
         private string password = "autotestPassword123";
+        private TestBase tb;
 
         [Fact]
         public void Test1()
         {
-            TransitionToSite();
-            TransitionToMail();
-            EnterLogin_Password();
+            YandexTest yt = new YandexTest(tb, out driver);
+            yt.TransitionToMail();
+            yt.EnterLogin(login);
+            yt.EnterPassword(password);
             Assert.Equal(login, CheckLogin());
+            BrowserManager.KillDriver();
         }
 
         [Fact]
@@ -29,54 +32,14 @@ namespace PullTest1_xUnit
             Assert.True(CheckLogout());
         }
 
-        public void TransitionToSite()
-        {
-            BrowserManager.InitDriver();
-            driver = BrowserManager.Driver;
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
-            driver.Url = "https://yandex.by/";
-        }
-
-        public void TransitionToMail()
-        { 
-            driver.FindElement(By.XPath("//a/parent::div[@class='desk-notif-card__card']")).Click();
-        }
-        string mainWindowHandle;
-        List<string> WindowHandles;
-
-        public void EnterLogin_Password()
-        {
-            mainWindowHandle = driver.CurrentWindowHandle;
-            WindowHandles = new List<string>(driver.WindowHandles);
-            int i = 0; string ChildWindow = WindowHandles[0];
-            while (WindowHandles.Count>i)
-            {
-                if (mainWindowHandle != WindowHandles[i])
-                {
-                    driver.SwitchTo().Window(WindowHandles[i]);
-                    mainWindowHandle = WindowHandles[i];
-                }
-                i++;
-            }
-            driver.FindElement(By.XPath("//input[@id='passp-field-login']")).SendKeys(login);
-            driver.FindElement(By.XPath("//button/parent::div[@class='passp-button passp-sign-in-button']")).Click();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.FindElement(By.XPath("//input[@id='passp-field-passwd']")).SendKeys(password);
-            driver.FindElement(By.XPath("//button[@class='Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit']")).Click();
-        }
-
         By locatorLogin = By.XPath("//span[@class='user-account__name']");
 
-        [Obsolete]
         public string CheckLogin()
         {
-            WindowHandles = new List<string>(driver.WindowHandles);
+            List<string> WindowHandles = new List<string>(driver.WindowHandles);
             driver.SwitchTo().Window(WindowHandles[WindowHandles.Count-1]);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-            Wait.ForExists(locatorLogin);
+            Wait.ForVisible(locatorLogin);
             string login = driver.FindElement(locatorLogin).Text;
-            BrowserManager.KillDriver(driver);
             return login;
         }
         public void LogOut()
