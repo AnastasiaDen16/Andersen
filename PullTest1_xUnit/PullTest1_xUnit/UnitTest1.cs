@@ -3,6 +3,7 @@ using Xunit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 
 namespace PullTest1_xUnit
 {
@@ -11,17 +12,17 @@ namespace PullTest1_xUnit
         private IWebDriver driver;
         private string login = "AutotestLogin";
         private string password = "autotestPassword123";
-        //[FindsBy(How = How.XPath, Using = "//a/parent::div[@class='desk-notif-card__card']")]
-        // private IWebElement mailBtn;
+
         [Fact]
         public void Test1()
         {
-            TransitionToSiteTest();
-            TransitionToMailTest();
+            TransitionToSite();
+            TransitionToMail();
             EnterLogin_Password();
 
             Assert.Equal(login, CheckLogin());
         }
+
         [Fact]
         public void Test2()
         {
@@ -30,34 +31,49 @@ namespace PullTest1_xUnit
             Assert.True(CheckLogout());
         }
 
-        public void TransitionToSiteTest()
+        public void TransitionToSite()
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
             driver.Url = "https://yandex.by/";
         }
 
-        public void TransitionToMailTest()
-        {
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
+        public void TransitionToMail()
+        { 
             driver.FindElement(By.XPath("//a/parent::div[@class='desk-notif-card__card']")).Click();
-            //mailBtn.Click();
         }
+        string mainWindowHandle;
+        List<string> WindowHandles;
 
         public void EnterLogin_Password()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            //wait.Until(drv => drv.FindElement(By.XPath("//input[@id='passp-field-login']")));
-            wait.Until(drv => drv.PageSource); 
+            mainWindowHandle = driver.CurrentWindowHandle;
+            WindowHandles = new List<string>(driver.WindowHandles);
+            int i = 0; string ChildWindow = WindowHandles[0];
+            while (WindowHandles.Count>i)
+            {
+                if (mainWindowHandle != WindowHandles[i])
+                {
+                    driver.SwitchTo().Window(WindowHandles[i]);
+                    mainWindowHandle = WindowHandles[i];
+                }
+                i++;
+            }
             driver.FindElement(By.XPath("//input[@id='passp-field-login']")).SendKeys(login);
-            driver.FindElement(By.XPath("//button/parent::div[@class='passp-button passp-sign-in-button']"));
-            driver.FindElement(By.Id("passp-field-passwd")).SendKeys(password);
-            driver.FindElement(By.XPath("//button[@class='Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit'"));
+            driver.FindElement(By.XPath("//button/parent::div[@class='passp-button passp-sign-in-button']")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.FindElement(By.XPath("//input[@id='passp-field-passwd']")).SendKeys(password);
+            driver.FindElement(By.XPath("//button[@class='Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit']")).Click();
         }
 
         public string CheckLogin()
         {
-            string login = driver.FindElement(By.XPath("span[@class='user -account__name']")).Text;
+            WindowHandles = new List<string>(driver.WindowHandles);
+            driver.SwitchTo().Window(WindowHandles[WindowHandles.Count-1]);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            driver.FindElement(By.XPath("//a[@class='user-account user-account_left-name user-account_has-ticker_yes user-account_has-accent-letter_yes count-me legouser__current-account legouser__current-account i-bem']")).Click();
+            string login = driver.FindElement(By.XPath("span[@class='user-account__name']")).Text;
             return login;
         }
         public void LogOut()
