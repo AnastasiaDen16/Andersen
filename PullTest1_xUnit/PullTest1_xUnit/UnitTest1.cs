@@ -68,6 +68,7 @@ namespace PullTest1_xUnit
 
         By locatorLogin = By.XPath("//span[@class='user-account__name']");
 
+        [Obsolete]
         public string CheckLogin()
         {
             WindowHandles = new List<string>(driver.WindowHandles);
@@ -75,7 +76,7 @@ namespace PullTest1_xUnit
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             Wait.ForExists(locatorLogin);
             string login = driver.FindElement(locatorLogin).Text;
-            BrowserManager.KillDriver();
+            BrowserManager.KillDriver(driver);
             return login;
         }
         public void LogOut()

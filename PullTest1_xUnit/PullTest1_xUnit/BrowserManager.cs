@@ -25,7 +25,7 @@ namespace PullTest1_xUnit
             if (driver==null) driver = new ChromeDriver();
         }
 
-        public static void KillDriver()
+        public static void KillDriver(IWebDriver driver)
         {
             if (driver != null) driver.Close();
         }
