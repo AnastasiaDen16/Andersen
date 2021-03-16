@@ -14,7 +14,7 @@ namespace PullTest1_xUnit.Tests
         [Fact]
         public void Test1()
         {
-            YandexTest yt = new YandexTest(out tb, out driver);
+            YandexTest yt = new YandexTest();
 
         }
     }

@@ -99,3 +99,9 @@ F:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTes
 F:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\bin\Debug\netcoreapp3.1\testhost.exe
 F:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\bin\Debug\netcoreapp3.1\SeleniumExtras.PageObjects.dll
 F:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\bin\Debug\netcoreapp3.1\SeleniumExtras.WaitHelpers.dll
+E:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTest1_xUnit.csprojAssemblyReference.cache
+E:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTest1_xUnit.AssemblyInfoInputs.cache
+E:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTest1_xUnit.AssemblyInfo.cs
+E:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTest1_xUnit.csproj.CoreCompileInputs.cache
+E:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTest1_xUnit.dll
+E:\Work\Andersen\PullTest1_xUnit\PullTest1_xUnit\obj\Debug\netcoreapp3.1\PullTest1_xUnit.pdb
