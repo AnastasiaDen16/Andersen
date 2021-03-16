@@ -5,20 +5,20 @@ using System.Text;
 
 namespace PullTest1_xUnit
 {
-    public class TestBase
+    public class TestBase : IDisposable
     {
-        public TestBase(out IWebDriver driver, string url)
+        public TestBase()
         {
-            Initialized(out driver, url);
+            Initialize();
         }
 
-        static public void Initialized(out IWebDriver driver, string url)
+        static public void Initialize()
         {
             BrowserManager.InitDriver();
-            driver = BrowserManager.Driver;
+            var driver = BrowserManager.Driver;
             driver.Manage().Window.Maximize();
             //Wait.LoadPage();
-            driver.Url = url;
+            driver.Url = "https://yandex.by/";
         }
 
         public void Dispose()

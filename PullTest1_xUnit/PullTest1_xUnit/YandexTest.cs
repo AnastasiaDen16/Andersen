@@ -5,16 +5,15 @@ using System.Text;
 
 namespace PullTest1_xUnit
 {
-    public class YandexTest
+    public class YandexTest: TestBase
     {
         IWebDriver driver;
         string mainWindowHandle;
         List<string> WindowHandles;
 
-        public YandexTest(out TestBase tb, out IWebDriver driver)
+        public YandexTest():base()
         {
-            tb = new TestBase(out driver, "https://yandex.by/");
-            this.driver = driver;
+
         }
         public void TransitionToMail()
         {
