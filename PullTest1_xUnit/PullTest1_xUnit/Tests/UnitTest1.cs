@@ -27,6 +27,7 @@ namespace PullTest1_xUnit
         [Fact]
         public void Test2()
         {
+            YandexTest yt = new YandexTest(out tb, out driver);
             LogOut();
             Assert.True(CheckLogout());
             tb.Dispose();
