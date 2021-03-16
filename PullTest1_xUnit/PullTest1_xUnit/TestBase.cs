@@ -17,11 +17,11 @@ namespace PullTest1_xUnit
             BrowserManager.InitDriver();
             driver = BrowserManager.Driver;
             driver.Manage().Window.Maximize();
-            Wait.LoadPage();
+            //Wait.LoadPage();
             driver.Url = url;
         }
 
-        static public void Dispose()
+        public void Dispose()
         {
             BrowserManager.KillDriver();
         }

@@ -17,12 +17,11 @@ namespace PullTest1_xUnit
         [Fact]
         public void Test1()
         {
-            YandexTest yt = new YandexTest(tb, out driver);
+            YandexTest yt = new YandexTest(out tb, out driver);
             yt.TransitionToMail();
             yt.EnterLogin(login);
             yt.EnterPassword(password);
             Assert.Equal(login, CheckLogin());
-            BrowserManager.KillDriver();
         }
 
         [Fact]
@@ -30,6 +29,7 @@ namespace PullTest1_xUnit
         {
             LogOut();
             Assert.True(CheckLogout());
+            tb.Dispose();
         }
 
         By locatorLogin = By.XPath("//span[@class='user-account__name']");
@@ -44,12 +44,14 @@ namespace PullTest1_xUnit
         }
         public void LogOut()
         {
-            driver.FindElement(By.XPath("//div[@class='legouser legouser_fetch-accounts_yes legouser_hidden_yes i-bem']")).Click();
-            driver.FindElement(By.XPath("//a[@class='menu__item menu__item_type_link count-me legouser__menu-item legouser__menu-item_action_exit legouser__menu-item legouser__menu-item_action_exit']"));
+            By user = By.XPath("//div[@class='legouser legouser_fetch-accounts_yes legouser_hidden_yes i-bem']");
+            Wait.ForVisible(user);
+            driver.FindElement(user).Click();
+            driver.FindElement(By.XPath("//a[@class='menu__item menu__item_type_link count-me legouser__menu-item legouser__menu-item_action_exit legouser__menu-item legouser__menu-item_action_exit']")).Click();
         }
         public bool CheckLogout()
         {
-            bool logout = driver.FindElement(By.XPath("div[@class='passp-button passp-sign-in-button']")).Displayed;
+            bool logout = driver.FindElement(By.XPath("//div[@class='passp-button passp-sign-in-button']")).Displayed;
             return logout;
         }
     }

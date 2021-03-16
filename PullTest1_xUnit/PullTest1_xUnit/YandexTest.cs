@@ -11,7 +11,7 @@ namespace PullTest1_xUnit
         string mainWindowHandle;
         List<string> WindowHandles;
 
-        public YandexTest(TestBase tb, out IWebDriver driver)
+        public YandexTest(out TestBase tb, out IWebDriver driver)
         {
             tb = new TestBase(out driver, "https://yandex.by/");
             this.driver = driver;
@@ -23,7 +23,7 @@ namespace PullTest1_xUnit
         
         public void EnterLogin(string login)
         {
-            
+            By log = By.XPath("//input[@id='passp-field-login']");
             mainWindowHandle = driver.CurrentWindowHandle;
             WindowHandles = new List<string>(driver.WindowHandles);
             int i = 0; string ChildWindow = WindowHandles[0];
@@ -36,7 +36,8 @@ namespace PullTest1_xUnit
                 }
                 i++;
             }
-            driver.FindElement(By.XPath("//input[@id='passp-field-login']")).SendKeys(login);
+            Wait.ForVisible(log);
+            driver.FindElement(log).SendKeys(login);
             driver.FindElement(By.XPath("//button/parent::div[@class='passp-button passp-sign-in-button']")).Click();
             
         }
