@@ -19,7 +19,6 @@ namespace PullTest1_xUnit
             TransitionToSite();
             TransitionToMail();
             EnterLogin_Password();
-
             Assert.Equal(login, CheckLogin());
         }
 
@@ -27,7 +26,6 @@ namespace PullTest1_xUnit
         public void Test2()
         {
             LogOut();
-
             Assert.True(CheckLogout());
         }
 
