@@ -31,7 +31,8 @@ namespace PullTest1_xUnit
 
         public void TransitionToSite()
         {
-            driver = new ChromeDriver();
+            BrowserManager.InitDriver();
+            driver = BrowserManager.Driver;
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
             driver.Url = "https://yandex.by/";
@@ -65,13 +66,16 @@ namespace PullTest1_xUnit
             driver.FindElement(By.XPath("//button[@class='Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit']")).Click();
         }
 
+        By locatorLogin = By.XPath("//span[@class='user-account__name']");
+
         public string CheckLogin()
         {
             WindowHandles = new List<string>(driver.WindowHandles);
             driver.SwitchTo().Window(WindowHandles[WindowHandles.Count-1]);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            driver.FindElement(By.XPath("//a[@class='user-account user-account_left-name user-account_has-ticker_yes user-account_has-accent-letter_yes count-me legouser__current-account legouser__current-account i-bem']")).Click();
-            string login = driver.FindElement(By.XPath("span[@class='user-account__name']")).Text;
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+            Wait.ForExists(locatorLogin);
+            string login = driver.FindElement(locatorLogin).Text;
+            BrowserManager.KillDriver();
             return login;
         }
         public void LogOut()
