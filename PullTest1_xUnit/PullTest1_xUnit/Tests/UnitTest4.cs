@@ -9,12 +9,11 @@ namespace PullTest1_xUnit.Tests
     public class UnitTest4
     {
         private static IWebDriver driver = null;
-        private TestBase tb;
 
         [Fact]
         public void Test1()
         {
-            YandexTest yt = new YandexTest(out tb, out driver);
+            YandexTest yt = new YandexTest();
 
         }
     }

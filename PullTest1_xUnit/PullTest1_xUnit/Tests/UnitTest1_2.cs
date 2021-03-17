@@ -1,47 +1,26 @@
+﻿using OpenQA.Selenium;
 using System;
-using Xunit;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+using System.Text;
+using Xunit;
 
-namespace PullTest1_xUnit
+namespace PullTest1_xUnit.Tests
 {
-    public class UnitTest1
+    public class UnitTest1_2
     {
         private static IWebDriver driver = null;
         private string login = "AutotestLogin";
         private string password = "autotestPassword123";
-        private TestBase tb;
 
         [Fact]
         public void Test1()
         {
-            YandexTest yt = new YandexTest(out tb, out driver);
+            YandexTest yt = new YandexTest();
             yt.TransitionToMail();
             yt.EnterLogin(login);
             yt.EnterPassword(password);
-            Assert.Equal(login, CheckLogin());
-        }
-
-        [Fact]
-        public void Test2()
-        {
-            YandexTest yt = new YandexTest(out tb, out driver);
             LogOut();
             Assert.True(CheckLogout());
-            tb.Dispose();
-        }
-
-        By locatorLogin = By.XPath("//span[@class='user-account__name']");
-
-        public string CheckLogin()
-        {
-            List<string> WindowHandles = new List<string>(driver.WindowHandles);
-            driver.SwitchTo().Window(WindowHandles[WindowHandles.Count-1]);
-            Wait.ForVisible(locatorLogin);
-            string login = driver.FindElement(locatorLogin).Text;
-            return login;
         }
         public void LogOut()
         {

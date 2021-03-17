@@ -10,7 +10,6 @@ namespace PullTest1_xUnit
     public class UnitTest2
     {
         private IWebDriver driver;
-        private TestBase tb;
         private string login = "AutotestLogin";
         private string InvalidLogin = "NoautotestLogin";
         private string password = "NoAutotestPassword";
@@ -18,22 +17,20 @@ namespace PullTest1_xUnit
         [Fact]
         public void Test1()
         {
-            YandexTest yt = new YandexTest(out tb, out driver);
+            YandexTest yt = new YandexTest();
             yt.TransitionToMail();
             yt.EnterLogin(login);
             yt.EnterPassword(password);
             Assert.True(IsInValidPass());
-            tb.Dispose();
         }
 
         [Fact]
         public void Test2()
         {
-            YandexTest yt = new YandexTest(out tb, out driver);
+            YandexTest yt = new YandexTest();
             yt.TransitionToMail();
             yt.EnterLogin(InvalidLogin);
             Assert.True(IsInValidLog());
-            tb.Dispose();
         }
 
         public bool IsInValidPass()
