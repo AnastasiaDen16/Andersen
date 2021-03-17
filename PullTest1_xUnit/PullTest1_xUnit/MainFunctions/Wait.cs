@@ -14,6 +14,12 @@ namespace PullTest1_xUnit
         {
             wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
+
+        static public void ForExist(By locator)
+        {
+            wait.Until(ExpectedConditions.ElementExists(locator));
+        }
+
         static public void LoadPage()
         {
             wait.Until(dvr=>dvr.PageSource);

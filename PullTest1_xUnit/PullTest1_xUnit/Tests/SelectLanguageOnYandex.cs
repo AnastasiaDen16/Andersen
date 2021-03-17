@@ -34,7 +34,6 @@ namespace PullTest1_xUnit.Tests
             {
                 driver.FindElement(By.XPath("a[@class='//menu__item menu__item_type_link']/parent::span[contains(text(),'Eng')]")).Click();
             }
-
         }
 
         public bool CheckLang()
