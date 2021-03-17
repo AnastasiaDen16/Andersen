@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using PullTest1_xUnit.Pages;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,17 +7,17 @@ using Xunit;
 
 namespace PullTest1_xUnit.Tests
 {
-    public class UnitTest1_2
+    public class LogoutFromYandex:TestBase
     {
-        private static IWebDriver driver = null;
         private string login = "AutotestLogin";
         private string password = "autotestPassword123";
 
         [Fact]
-        public void Test1()
+        public void LodoutTest()
         {
             LogOut();
             Assert.True(CheckLogout());
+            Dispose();
         }
 
         public void LogOut()
@@ -24,10 +25,9 @@ namespace PullTest1_xUnit.Tests
             By user = By.XPath("//a/parent::div[@class='desk-notif-card__card']");
             if (driver.FindElement(user).Displayed)
             {
-                YandexTest yt = new YandexTest();
-                yt.TransitionToMail();
-                yt.EnterLogin(login);
-                yt.EnterPassword(password);
+                MainPage.TransitionToMail();
+                AutorizationPage.EnterLogin(login);
+                AutorizationPage.EnterPassword(password);
                 LogOutWithLogin();
             }
             else LogOutWithLogin();

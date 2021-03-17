@@ -4,23 +4,23 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+using PullTest1_xUnit.Pages;
 
-namespace PullTest1_xUnit
+namespace PullTest1_xUnit.Tests
 {
-    public class UnitTest1_1
+    public class AutorizationToYandex:TestBase
     {
-        private static IWebDriver driver = null;
         private string login = "AutotestLogin";
         private string password = "autotestPassword123";
 
         [Fact]
-        public void Test1()
+        public void AutorizationTest()
         {
-            YandexTest yt = new YandexTest();
-            yt.TransitionToMail();
-            yt.EnterLogin(login);
-            yt.EnterPassword(password);
+            MainPage.TransitionToMail();
+            AutorizationPage.EnterLogin(login);
+            AutorizationPage.EnterPassword(password);
             Assert.Equal(login, CheckLogin());
+            Dispose();
         }
 
         By locatorLogin = By.XPath("//span[@class='user-account__name']");
