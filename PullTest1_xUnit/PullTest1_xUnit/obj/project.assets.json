@@ -6553,23 +6553,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anastasiya\\.nuget\\packages\\": {},
-    "D:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Anastasia\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Work\\Andersen\\PullTest1_xUnit\\PullTest1_xUnit\\PullTest1_xUnit.csproj",
+      "projectUniqueName": "F:\\Work\\Andersen\\PullTest1_xUnit\\PullTest1_xUnit\\PullTest1_xUnit.csproj",
       "projectName": "PullTest1_xUnit",
-      "projectPath": "E:\\Work\\Andersen\\PullTest1_xUnit\\PullTest1_xUnit\\PullTest1_xUnit.csproj",
-      "packagesPath": "C:\\Users\\Anastasiya\\.nuget\\packages\\",
-      "outputPath": "E:\\Work\\Andersen\\PullTest1_xUnit\\PullTest1_xUnit\\obj\\",
+      "projectPath": "F:\\Work\\Andersen\\PullTest1_xUnit\\PullTest1_xUnit\\PullTest1_xUnit.csproj",
+      "packagesPath": "C:\\Users\\Anastasia\\.nuget\\packages\\",
+      "outputPath": "F:\\Work\\Andersen\\PullTest1_xUnit\\PullTest1_xUnit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Anastasiya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Anastasia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -6662,7 +6665,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
