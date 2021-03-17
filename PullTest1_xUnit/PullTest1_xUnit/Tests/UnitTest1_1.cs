@@ -28,7 +28,7 @@ namespace PullTest1_xUnit
         public string CheckLogin()
         {
             List<string> WindowHandles = new List<string>(driver.WindowHandles);
-            driver.SwitchTo().Window(WindowHandles[WindowHandles.Count-1]);
+            driver.SwitchTo().Window(WindowHandles[WindowHandles.Count - 1]);
             Wait.ForVisible(locatorLogin);
             string login = driver.FindElement(locatorLogin).Text;
             return login;

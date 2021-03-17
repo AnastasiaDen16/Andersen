@@ -5,13 +5,13 @@ using System.Text;
 
 namespace PullTest1_xUnit
 {
-    public class YandexTest: TestBase
+    public class YandexTest
     {
         IWebDriver driver;
         string mainWindowHandle;
         List<string> WindowHandles;
 
-        public YandexTest():base()
+        public YandexTest()
         {
 
         }
@@ -19,7 +19,7 @@ namespace PullTest1_xUnit
         {
             driver.FindElement(By.XPath("//a/parent::div[@class='desk-notif-card__card']")).Click();
         }
-        
+
         public void EnterLogin(string login)
         {
             By log = By.XPath("//input[@id='passp-field-login']");
@@ -38,9 +38,9 @@ namespace PullTest1_xUnit
             Wait.ForVisible(log);
             driver.FindElement(log).SendKeys(login);
             driver.FindElement(By.XPath("//button/parent::div[@class='passp-button passp-sign-in-button']")).Click();
-            
+
         }
-        public void EnterPassword(string password) 
+        public void EnterPassword(string password)
         {
             By pass = By.XPath("//input[@id='passp-field-passwd']");
             Wait.ForVisible(pass);

@@ -17,7 +17,7 @@ namespace PullTest1_xUnit
             BrowserManager.InitDriver();
             var driver = BrowserManager.Driver;
             driver.Manage().Window.Maximize();
-            //Wait.LoadPage();
+            Wait.LoadPage();
             driver.Url = "https://yandex.by/";
         }
 

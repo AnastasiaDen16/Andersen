@@ -32,7 +32,7 @@ namespace PullTest1_xUnit.Tests
             }
             else LogOutWithLogin();
         }
-        
+
         public void LogOutWithoutLogin()
         {
             By user = By.XPath("//a[@class='home-link usermenu-link__control home-link_black_yes']");
