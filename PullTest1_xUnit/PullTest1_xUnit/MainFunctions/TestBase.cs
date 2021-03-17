@@ -7,17 +7,18 @@ namespace PullTest1_xUnit
 {
     public class TestBase : IDisposable
     {
+        protected static IWebDriver driver;
         public TestBase()
         {
             Initialize();
         }
 
-        static public void Initialize()
+        public static void Initialize()
         {
             BrowserManager.InitDriver();
-            var driver = BrowserManager.Driver;
+            driver = BrowserManager.Driver;
             driver.Manage().Window.Maximize();
-            //Wait.LoadPage();
+            Wait.LoadPage();
             driver.Url = "https://yandex.by/";
         }
 

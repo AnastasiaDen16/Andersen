@@ -27,7 +27,7 @@ namespace PullTest1_xUnit
 
         public static void KillDriver()
         {
-            if (driver != null) driver.Close();
+            if (driver != null) driver.Quit();
         }
     }
 }

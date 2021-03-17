@@ -8,12 +8,18 @@ namespace PullTest1_xUnit
 {
     public class Wait
     {
-        private static WebDriverWait wait = new WebDriverWait(BrowserManager.Driver, TimeSpan.FromSeconds(30));
+        private static WebDriverWait wait = new WebDriverWait(BrowserManager.Driver, TimeSpan.FromSeconds(20));
 
         static public void ForVisible(By locator)
         {
             wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
+
+        static public void ForExist(By locator)
+        {
+            wait.Until(ExpectedConditions.ElementExists(locator));
+        }
+
         static public void LoadPage()
         {
             wait.Until(dvr=>dvr.PageSource);
