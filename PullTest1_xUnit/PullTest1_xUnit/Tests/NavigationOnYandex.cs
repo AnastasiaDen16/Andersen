@@ -13,10 +13,8 @@ namespace PullTest1_xUnit.Tests
         [Fact]
         public void Test1()
         {
-            By Video = By.XPath("//a[@class='home-link services-new__item services-new__item_search_yes home-link_black_yes']");
-            
+            By Video = By.XPath("//a[@data-id='video']");
             Assert.True(CheckNavigation(Video));
-
         }
 
         public bool CheckNavigation(By NavigationLocator)
