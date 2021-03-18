@@ -1,8 +1,5 @@
 ﻿using OpenQA.Selenium;
 using PullTest1_xUnit.Pages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace PullTest1_xUnit.Tests
@@ -15,12 +12,13 @@ namespace PullTest1_xUnit.Tests
         By TabTranslate = By.XPath("//span[@class='logo-text']");
         By TabMusic = By.XPath("//a[@class='d-logo__ya-sub']");
         By Locator;
+        NavigationTo nt = new NavigationTo();
 
         [Fact]
         public void VideoTest()
         {
             Locator = By.XPath("//a[@data-id='video']");
-            Assert.True(CheckNavigation(Locator, TabLocator));
+            Assert.True(nt.CheckNavigation(Locator, TabLocator));
             Dispose();
         }
 
@@ -28,13 +26,13 @@ namespace PullTest1_xUnit.Tests
         public void ImageTest()
         {
             Locator = By.XPath("//a[@data-id='images']");
-            Assert.True(CheckNavigation(Locator, TabLocator));
+            Assert.True(nt.CheckNavigation(Locator, TabLocator));
             Dispose();
         }
         public void NewsTest()
         {
             Locator = By.XPath("//a[@data-id='news']");
-            Assert.True(CheckNavigation(Locator, TabLocator));
+            Assert.True(nt.CheckNavigation(Locator, TabLocator));
             Dispose();
         }
 
@@ -42,7 +40,7 @@ namespace PullTest1_xUnit.Tests
         public void MapsTest()
         {
             Locator = By.XPath("//a[@data-id='maps']");
-            Assert.True(CheckNavigation(Locator, TabMaps));
+            Assert.True(nt.CheckNavigation(Locator, TabMaps));
             Dispose();
         }
 
@@ -50,7 +48,7 @@ namespace PullTest1_xUnit.Tests
         public void MarketTest()
         {
             Locator = By.XPath("//a[@data-id='market']");
-            Assert.True(CheckNavigation(Locator, TabMarket));
+            Assert.True(nt.CheckNavigation(Locator, TabMarket));
             Dispose();
         }
 
@@ -58,7 +56,7 @@ namespace PullTest1_xUnit.Tests
         public void TranslatorTest()
         {
             Locator = By.XPath("//a[@data-id='translate']");
-            Assert.True(CheckNavigation(Locator, TabTranslate));
+            Assert.True(nt.CheckNavigation(Locator, TabTranslate));
             Dispose();
         }
 
@@ -66,18 +64,8 @@ namespace PullTest1_xUnit.Tests
         public void MusicTest()
         {
             Locator = By.XPath("//a[@data-id='music']");
-            Assert.True(CheckNavigation(Locator, TabMusic));
+            Assert.True(nt.CheckNavigation(Locator, TabMusic));
             Dispose();
-        }
-
-        public bool CheckNavigation(By NavigationLocator, By Tab)
-        {
-            NavigationTo.NavigationToPage(NavigationLocator);
-            string mainWindowHandle = BrowserManager.Driver.CurrentWindowHandle;
-            List<string> WindowHandles = new List<string>(BrowserManager.Driver.WindowHandles);
-            driver.SwitchTo().Window(WindowHandles[WindowHandles.Count - 1]);
-            Wait.ForExist(Tab);
-            return driver.FindElement(Tab).Displayed;
         }
     }
 }
