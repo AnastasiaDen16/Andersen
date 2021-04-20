@@ -1,4 +1,5 @@
-﻿using PullTest1_xUnit.Pages;
+﻿using PullTest1_xUnit.MainFunctions;
+using PullTest1_xUnit.Pages;
 using Xunit;
 
 namespace PullTest1_xUnit.Tests

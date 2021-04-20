@@ -1,9 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PullTest1_xUnit
+namespace PullTest1_xUnit.MainFunctions
 {
     public class TestBase : IDisposable
     {
@@ -15,8 +13,8 @@ namespace PullTest1_xUnit
 
         public static void Initialize()
         {
-            BrowserManager.InitDriver();
-            driver = BrowserManager.Driver;
+            BrowserManageSingleton.InitDriver();
+            driver = BrowserManageSingleton.Driver;
             driver.Manage().Window.Maximize();
             Wait.LoadPage();
             driver.Url = "https://yandex.by/";
@@ -24,7 +22,7 @@ namespace PullTest1_xUnit
 
         public void Dispose()
         {
-            BrowserManager.KillDriver();
+            BrowserManageSingleton.KillDriver();
         }
     }
 }
