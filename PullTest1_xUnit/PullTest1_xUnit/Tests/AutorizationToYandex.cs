@@ -1,6 +1,7 @@
 using PullTest1_xUnit.MainFunctions;
 using PullTest1_xUnit.Pages;
 using Xunit;
+using System.Net;
 
 namespace PullTest1_xUnit.Tests
 {
@@ -19,6 +20,8 @@ namespace PullTest1_xUnit.Tests
             autorizPage.EnterPassword(password);
             Assert.Equal(login, autorizPage.CheckLogin());
             Dispose();
+
+           
         }
     }
 }
